@@ -33,4 +33,4 @@ clean:	## Removes all dangling build cache
 build:	## Build all of the project Docker images
 	$(info Building $(IMAGE) for $(PLATFORM)...)
 	cd src && docker buildx build --pull --platform=$(PLATFORM) --tag $(IMAGE) --push .
-	echo "Build $(IMAGE) for $(PLATFORM) success on $(shell date +'%Y-%m-%d %H:%M:%S')" >> build.log
+	echo "$(shell date +'%Y-%m-%d %H:%M:%S') Build $(IMAGE) for $(PLATFORM) success!" >> build.log
