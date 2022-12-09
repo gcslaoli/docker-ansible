@@ -2,7 +2,8 @@
 
 ansible docker 运行环境
 
-镜像地址：[https://hub.docker.com/r/gcslaoli/ansible/](https://hub.docker.com/r/gcslaoli/ansible/)
+- 镜像地址：[https://hub.docker.com/r/gcslaoli/ansible/](https://hub.docker.com/r/gcslaoli/ansible/)
+- GitHub 地址：[https://github.com/gcslaoli/docker-ansible](https://github.com/gcslaoli/docker-ansible)
 
 ## 1. 说明
 
