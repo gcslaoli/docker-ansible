@@ -3,6 +3,6 @@ services:
   ansible:
     build: ./src
     image: gcslaoli/ansible:dev
-    container_name: ansible
     volumes:
-      - ./src:/ansible
+      - ./:/ansible/
+    command: sleep infinity
