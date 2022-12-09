@@ -1,0 +1,11 @@
+- hosts: all
+  tasks:
+    - name: 文本输出
+      debug:
+        msg: "Hello World"
+    - name: 输出变量
+      debug:
+        var: ansible_version
+    - name: 输出 ansible_facts
+      debug:
+        var: ansible_facts
