@@ -3,6 +3,9 @@ services:
   ansible:
     build: ./src
     image: gcslaoli/ansible:dev
+    environment:
+      - AUTO_SSHKEY_COMMENT=ansible
     volumes:
       - ./:/ansible/
+      - ./data/.ssh:/tmp/.ssh
     command: sleep infinity
