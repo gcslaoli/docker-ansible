@@ -25,7 +25,7 @@ ansible docker 运行环境
 version: "3"
 services:
   ansible:
-    image: gcslaoli/ansible:dev
+    image: gcslaoli/ansible:latest
     environment:
       - AUTO_SSHKEY_COMMENT=ansible # 自动生成的 ssh 密钥注释
     volumes:
