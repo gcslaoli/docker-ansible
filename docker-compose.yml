@@ -1,0 +1,8 @@
+version: '3'
+services:
+  ansible:
+    build: ./src
+    image: gcslaoli/ansible:dev
+    container_name: ansible
+    volumes:
+      - ./src:/ansible
