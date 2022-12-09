@@ -66,10 +66,15 @@ docker-compose down
 
 ```ini
 [defaults]
-inventory = ./inventory.yml # 指定 inventory 文件
-host_key_checking = False # 关闭 ssh 主机密钥检查
-roles_path = ./roles # 指定 roles 目录
-collections_paths = ./collections # 指定 collections 目录
+# 指定 ansible-playbook 执行时的默认 inventory 文件
+inventory = ./inventory.yml
+# 关闭 SSH 主机密钥检查
+host_key_checking = False
+# 指定 ansible-playbook 执行时的默认 roles 路径
+roles_path = ./roles
+# 指定 ansible-playbook 执行时的默认 collections 路径
+collections_paths = ./collections
+
 ```
 
 ## 4. 目录结构
