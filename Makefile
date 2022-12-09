@@ -10,8 +10,9 @@ PLATFORM ?= "linux/amd64,linux/arm64"
 help: ## 查看帮助
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: start
-start: ## 启动服务
+.PHONY: run
+run: ## 启动服务
+	@docker-compose pull
 	@docker-compose run --rm ansible bash
 
 # 初始化环境
@@ -32,3 +33,4 @@ clean:	## Removes all dangling build cache
 build:	## Build all of the project Docker images
 	$(info Building $(IMAGE) for $(PLATFORM)...)
 	cd src && docker buildx build --pull --platform=$(PLATFORM) --tag $(IMAGE) --push .
+	echo "Build $(IMAGE) for $(PLATFORM) success on $(shell date +'%Y-%m-%d %H:%M:%S')" >> build.log

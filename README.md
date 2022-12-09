@@ -30,7 +30,8 @@ services:
       - AUTO_SSHKEY_COMMENT=ansible # 自动生成的 ssh 密钥注释
     volumes:
       - ./:/ansible/ # 将当前目录挂载到容器的 /ansible 目录
-      - ./data/.ssh:/tmp/.ssh # 将 ssh 密钥挂载到容器的 /tmp/.ssh 目录
+      - ./data/.ssh:/tmp/.ssh # 将 ssh 密钥挂载到容器的 /tmp/.ssh 目录,如果本地目录为空, 将会自动生成密钥
+    command: sleep infinity # 保持容器运行
 ```
 
 启动容器：
@@ -59,17 +60,33 @@ TIP: 退出容器后，容器将会被删除。如果不想删除容器, 可以�
 docker-compose down
 ```
 
-## 3. 目录结构
+## 3. 配置
+
+可在 docker-compose.yml 文件同级目录下创建 ansible.cfg 文件，用于配置 ansible。
+
+```ini
+[defaults]
+inventory = ./inventory.yml # 指定 inventory 文件
+host_key_checking = False # 关闭 ssh 主机密钥检查
+roles_path = ./roles # 指定 roles 目录
+collections_paths = ./collections # 指定 collections 目录
+```
+
+## 4. 目录结构
 
 ```bash
 .
-├── README.md
-├── docker-compose.yml
-├── hosts
-└── playbook.yml
+├── ansible.cfg # ansible 配置文件
+├── collections # collections 目录
+├── data # 数据目录
+│   └── .ssh # ssh 密钥目录
+├── docker-compose.yml # docker-compose 配置文件
+├── inventory.yml # inventory 文件
+├── playbook.yml # playbook 文件
+└── roles # roles 目录
 ```
 
-## 4. 更新
+## 5. 更新
 
 ```bash
 docker-compose pull

@@ -1,9 +1,7 @@
 version: '3'
 services:
   ansible:
-    build: ./src
     image: gcslaoli/ansible:dev
-    hostname: ansible
     environment:
       - AUTO_SSHKEY_COMMENT=ansible
     volumes:
