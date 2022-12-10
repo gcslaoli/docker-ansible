@@ -30,7 +30,13 @@ clean:	## Removes all dangling build cache
 	echo Y | docker buildx prune
 
 .PHONY: build
-build:	## Build all of the project Docker images
+build:	## 编译镜像
 	$(info Building $(IMAGE) for $(PLATFORM)...)
 	cd src && docker buildx build --pull --platform=$(PLATFORM) --tag $(IMAGE) --push .
 	echo "$(shell date +'%Y-%m-%d %H:%M:%S') Build $(IMAGE) for $(PLATFORM) success!" >> build.log
+
+.PHONY: build.dev
+build.dev:	## 编译开发镜像
+	$(info Building gcslaoli/ansible:dev for $(PLATFORM)...)
+	cd src && docker buildx build --pull --platform=$(PLATFORM) --tag gcslaoli/ansible:dev .
+	echo "$(shell date +'%Y-%m-%d %H:%M:%S') Build gcslaoli/ansible:dev for $(PLATFORM) success!" >> build.log

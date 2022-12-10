@@ -5,7 +5,7 @@ WORKDIR /ansible
 RUN sed -i "s@http://archive.ubuntu.com@http://mirrors.aliyun.com@g" /etc/apt/sources.list \
     && sed -i "s@http://ports.ubuntu.com@http://mirrors.aliyun.com@g" /etc/apt/sources.list \
     && sed -i "s@http://security.ubuntu.com@http://mirrors.aliyun.com@g" /etc/apt/sources.list \
-    && apt-get update && apt-get install -y python3-pip tzdata ssh\
+    && apt-get update && apt-get install -y python3-pip tzdata ssh sshpass \
     && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install --no-cache-dir ansible \
     && apt-get clean 
